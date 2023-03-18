@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@3
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run linting
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@3
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run tests
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@3
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run build
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@3
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run build
