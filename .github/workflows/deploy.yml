@@ -15,6 +15,12 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run tests
         run: yarn test --coverage
+      - name: Upload test coverage artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test coverage
+          path: |
+            ./coverage
 
   security-scan:
     runs-on: ubuntu-latest
