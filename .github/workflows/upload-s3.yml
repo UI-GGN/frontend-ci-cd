@@ -8,7 +8,6 @@ on:
 jobs:
   uploadS3:
     runs-on: ubuntu-latest
-    needs: [test, security-scan]
     steps:
       - name: Upload production artifacts
         uses: actions/download-artifact@v3
