@@ -53,5 +53,3 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: Static Build folder
-          path: |
-            ./build
