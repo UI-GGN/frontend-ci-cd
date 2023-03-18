@@ -49,3 +49,9 @@ jobs:
           name: Static Build folder
           path: |
             ./build
+      - name: Download production artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: Static Build folder download
+          path: |
+            ./build
