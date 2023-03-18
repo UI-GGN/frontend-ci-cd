@@ -53,3 +53,5 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: Static Build folder
+      - name: Display structure of downloaded files
+        run: ls -R
