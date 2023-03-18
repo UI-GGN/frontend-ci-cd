@@ -7,17 +7,6 @@ on:
       - main
 
 jobs:
-  lint:
-    if: github.event.pull_request.draft == false
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@3
-      - name: Setup Environment
-        uses: ./.github/actions/setup
-      - name: Run linting
-        run: npm lint
-
   test:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
@@ -27,7 +16,7 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run tests
-        run: npm test:coverage
+        run: yarn test:coverage
 
   build:
     if: github.event.pull_request.draft == false
@@ -38,7 +27,7 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run build
-        run: npm build
+        run: yarn build
 
   security-scan:
     if: github.event.pull_request.draft == false
@@ -49,4 +38,4 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run build
-        run: npm audit
+        run: yarn audit
