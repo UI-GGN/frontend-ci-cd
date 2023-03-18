@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run tests
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run audit
@@ -31,7 +31,7 @@ jobs:
     needs: [test, security-scan]
     steps:
       - name: Upload production artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Static Build folder
           path: |
