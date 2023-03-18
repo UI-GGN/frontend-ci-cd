@@ -11,5 +11,6 @@ runs:
         node-version: "18.x"
         cache: "yarn"
     - name: Install dependencies
+      shell: bash
       run: |
         yarn --frozen-lockfile
