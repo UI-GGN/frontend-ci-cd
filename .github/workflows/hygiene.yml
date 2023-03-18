@@ -1,4 +1,4 @@
-name: Deploy
+name: PRE-CHECKS
 
 on:
   push:

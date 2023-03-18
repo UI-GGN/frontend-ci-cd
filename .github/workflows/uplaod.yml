@@ -1,4 +1,4 @@
-name: Deploy
+name: Upload-S3
 
 on:
   push:
