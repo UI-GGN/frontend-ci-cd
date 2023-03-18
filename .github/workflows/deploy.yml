@@ -14,7 +14,7 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run tests
-        run: yarn test:coverage
+        run: yarn test --coverage
 
   security-scan:
     runs-on: ubuntu-latest
