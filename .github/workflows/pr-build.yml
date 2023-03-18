@@ -1,0 +1,52 @@
+name: PR Build
+
+on:
+  pull_request:
+    types: ["opened", "reopened", "synchronize", "ready_for_review"]
+    branches:
+      - main
+
+jobs:
+  lint:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+      - name: Run linting
+        run: npm lint
+
+  test:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+      - name: Run tests
+        run: npm test:coverage
+
+  build:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+      - name: Run build
+        run: npm build
+
+  security-scan:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+      - name: Run build
+        run: npm audit
