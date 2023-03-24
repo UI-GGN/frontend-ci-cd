@@ -31,5 +31,5 @@ jobs:
         aws --region us-east-1 s3 ls
     - name: Create test bucket
       run: |
-        aws s3 mb s3://frontend-cicd-1234
+        aws s3 mb s3://tw-frontend-cicd
     
