@@ -29,7 +29,4 @@ jobs:
     - name: Copy files to the test website with the AWS CLI
       run: |
         aws --region us-east-1 s3 ls
-    - name: Create test bucket
-      run: |
-        aws s3 mb s3://tw-frontend-cicd
     
