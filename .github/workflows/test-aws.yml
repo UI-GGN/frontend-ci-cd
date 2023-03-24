@@ -1,0 +1,30 @@
+name: Example pipeline
+on:
+ pull_request:
+   branches: [master]
+
+permissions:
+ id-token: write
+ contents: read# This is required for actions/checkout@v2
+
+jobs:
+ pull_request:
+   runs-on: ubuntu-latest
+
+   env:
+     AWS_DEFAULT_REGION: us-east-1
+
+   steps:
+   - name: configureawscredentials
+     uses: aws-actions/configure-aws-credentials@v1
+     with:
+       role-to-assume: ${{ secrets.IAM_ROLE }}
+       role-session-name: samplerolesession
+       aws-region: ${{env.AWS_DEFAULT_REGION}}
+
+   - name: Checkout
+     uses: actions/checkout@v2
+
+   - name: Some AWS commands
+     run: |
+       aws --region us-east-1 s3 ls
