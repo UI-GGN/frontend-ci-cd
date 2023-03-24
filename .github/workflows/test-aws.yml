@@ -8,26 +8,24 @@ on:
 
 permissions:
  id-token: write
- contents: read# This is required for actions/checkout@v2
+ contents: This is required for actions/checkout@v2
 
 jobs:
- pull_request:
-   runs-on: ubuntu-latest
-
-   env:
-     AWS_DEFAULT_REGION: us-east-1
-
-   steps:
-   - name: configureawscredentials
-     uses: aws-actions/configure-aws-credentials@v1
-     with:
-       role-to-assume: ${{ secrets.IAM_ROLE }}
-       role-session-name: samplerolesession
-       aws-region: ${{env.AWS_DEFAULT_REGION}}
-
-   - name: Checkout
-     uses: actions/checkout@v2
-
-   - name: Some AWS commands
-     run: |
-       aws --region us-east-1 s3 ls
+  deploy:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::111111111111:role/my-github-actions-role-test
+        aws-region: us-east-1
+    - name: Copy files to the test website with the AWS CLI
+      run: |
+        aws --region us-east-1 s3 ls
+    
