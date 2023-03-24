@@ -21,10 +21,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Configure AWS credentials from Test account
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@master
       with:
         role-to-assume: ${{secrets.IAM_ROLE}}
         aws-region: us-east-1
+        role-session-name: samplerolesession
     - name: Copy files to the test website with the AWS CLI
       run: |
         aws --region us-east-1 s3 ls
