@@ -5,11 +5,6 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch:
-    inputs:
-      bucket_nake:
-        description: "bucket name"
-        default: "test-bucket"
 
 permissions:
  id-token: write
@@ -36,7 +31,7 @@ jobs:
         aws --region us-east-1 s3 ls
     - name: Run Cf Template
       run: |
-        aws cloudformation deploy --stack-name static-hosting-demo-stack --template-file cftemplate/bucket.yml
+        aws cloudformation deploy --stack-name static-hosting-demo-stack --template-file cftemplate/bucket.yaml
 
 
     
