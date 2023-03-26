@@ -1,6 +1,11 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: A template for static hosting using S3 bucket and CloudFront
 
+Parameters:
+  BucketName:
+    Type: String
+    Description: The name of the S3 Bucket to create
+
 Outputs:
   S3BucketName:
     Value:
@@ -11,4 +16,4 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: Private
-      BucketName: "ravinder-demo-bucket-890"
+      BucketName: !Ref BucketName
