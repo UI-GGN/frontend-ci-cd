@@ -31,7 +31,7 @@ jobs:
         aws --region us-east-1 s3 ls
     - name: Run Cf Template
       run: |
-        aws cloudformation deploy --stack-name static-hosting-demo-stack --template-file cftemplate/bucket.yaml
+        aws cloudformation deploy --stack-name static-hosting-demo-stack --template-file cftemplate/bucket.yml
 
 
     
