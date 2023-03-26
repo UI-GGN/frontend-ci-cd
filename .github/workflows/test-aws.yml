@@ -5,6 +5,11 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      bucket_nake:
+        description: "bucket name"
+        default: "test-bucket"
 
 permissions:
  id-token: write
