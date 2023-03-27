@@ -32,6 +32,12 @@ jobs:
     - name: Run Cf Template
       run: |
         aws cloudformation deploy --stack-name static-hosting-demo-stack --template-file cftemplate/bucket.yml
+    - name: Build packages
+      run: |
+        yarn build
+    - name: Upload to S3
+      run: |
+        aws s3 sync ./build s3://your-test-bucket-name-twcicd
 
 
     
