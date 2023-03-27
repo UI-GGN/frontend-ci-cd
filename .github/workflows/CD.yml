@@ -40,6 +40,10 @@ jobs:
     - name: Upload to S3
       run: |
         aws s3 sync ./build s3://your-test-bucket-name-twcicd
+    - name: Upload to S3
+      run: |
+        aws cloudfront create-invalidation --distribution-id E2B8UOKCE3FAEE --paths "/*"
+        
 
 
     
