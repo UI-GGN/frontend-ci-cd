@@ -1,4 +1,4 @@
-name: PRE-CHECKS
+name: Continous-Integration
 
 on:
   push:
