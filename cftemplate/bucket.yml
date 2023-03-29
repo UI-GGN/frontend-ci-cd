@@ -11,4 +11,4 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: Private
-      BucketName: "your-test-bucket-name-twcicd"
+      BucketName: "this-will-pass-for-sure-cicd"
