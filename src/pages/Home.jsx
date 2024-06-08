@@ -9,7 +9,7 @@ const Home = () => {
   return (
       <div className='container'>
         <h1>Home Page for ci-cd</h1>
-        <Link to='products'>Products</Link>
+        <Link to='products'>Products page</Link>
       </div>
   );
 };
