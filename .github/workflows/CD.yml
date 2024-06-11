@@ -38,7 +38,7 @@ jobs:
         template: ./cftemplate/bucket.yml
         no-fail-on-empty-changeset: "1"
         capabilities: CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM,CAPABILITY_NAMED_IAM
-        parameter-overrides: "BucketName=frontend-ci-cd-web-app-s3-bucket"
+        parameter-overrides: "BucketName=frontend-ci-cd-web-app-s3-bucket-v2"
     - name: Build packages
       run: |
         yarn build
