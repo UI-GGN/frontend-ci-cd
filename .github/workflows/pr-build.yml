@@ -55,11 +55,7 @@ jobs:
         with:
           name: Static Build folder
       - name: Display structure of downloaded files
-<<<<<<< Updated upstream
-        run: ls -R
-=======
         run: ls -R
 
 
         
->>>>>>> Stashed changes
