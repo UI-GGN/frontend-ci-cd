@@ -60,7 +60,7 @@ jobs:
         run: ls -R
 
   provision_infrastructure:
-    name: Upload to Amazon S3
+    name: Provisioning infrastructure
     runs-on: ubuntu-latest
     needs: artifacts
     permissions:
@@ -91,7 +91,7 @@ jobs:
         
   deploy_to_cloud:
     needs: provision_infrastructure
-    name: Deploy to S3
+    name: Deploy to cloud
     runs-on: ubuntu-latest
     permissions:
       id-token: write
