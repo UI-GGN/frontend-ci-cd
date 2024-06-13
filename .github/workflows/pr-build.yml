@@ -8,34 +8,54 @@ on:
 
 jobs:
   test:
-    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@3
+        uses: actions/checkout@v3
       - name: Setup Environment
         uses: ./.github/actions/setup
       - name: Run tests
-        run: yarn test:coverage
-
-  build:
-    if: github.event.pull_request.draft == false
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@3
-      - name: Setup Environment
-        uses: ./.github/actions/setup
-      - name: Run build
-        run: yarn build
+        run: yarn test --coverage
+      - name: Upload test coverage artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test coverage
+          path: |
+            ./coverage
 
   security-scan:
-    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@3
+        uses: actions/checkout@v3
       - name: Setup Environment
         uses: ./.github/actions/setup
-      - name: Run build
+      - name: Run audit
         run: yarn audit
+
+  artifacts-pull-request:
+    runs-on: ubuntu-latest
+    needs: [test, security-scan]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+      - name: Build packages
+        run: |
+          yarn build
+      - name: Upload production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Static Build folder
+          path: |
+            ./build
+      - name: Download production artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: Static Build folder
+      - name: Display structure of downloaded files
+        run: ls -R
+
+
+        
