@@ -44,7 +44,7 @@ jobs:
         yarn build
     - name: Upload to S3
       run: |
-        aws s3 sync ./build s3://frontend-ci-cd-web-app-s3-bucket --delete
+        aws s3 sync ./build s3://frontend-ci-cd-web-app-s3-bucket-v2 --delete
     - name: Get CloudFront distribution ID
       id: get_cf_id
       run: |
