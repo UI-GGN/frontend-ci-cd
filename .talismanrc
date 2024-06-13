@@ -1,0 +1,6 @@
+fileignoreconfig:
+- filename: src/pages/Products.jsx
+  checksum: fe2cce8d222fb866932915d8d1889f04f2fa3cf1c7afdff6c3e29f45e65054a8
+- filename: yarn.lock
+  checksum: d4a8f3b656f9020441befca4334be20bc0f57736a86079f737193201d59e5d52
+version: "1.0"
