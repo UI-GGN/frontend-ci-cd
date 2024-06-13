@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: .github/workflows/main-pipeline.yml
+  checksum: 91bbfb33ee43b92d35f562b82e0c1a1349f90542f0837cb45526961cd699993b
 - filename: src/pages/Products.jsx
   checksum: fe2cce8d222fb866932915d8d1889f04f2fa3cf1c7afdff6c3e29f45e65054a8
 - filename: yarn.lock
