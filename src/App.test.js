@@ -8,6 +8,6 @@ test('renders learn react link', () => {
       <Home />
     </BrowserRouter>
   );
-  const linkElement = screen.getByText(/Welcome to Our Store/i);
+  const linkElement = screen.getByText(/Welcome to Our Frontend Store/i);
   expect(linkElement).toBeInTheDocument();
 });
