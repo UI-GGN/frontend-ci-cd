@@ -1,19 +1,3 @@
-# AWSTemplateFormatVersion: 2010-09-09
-# Description: A template for static hosting using S3 bucket and CloudFront
-
-# Outputs:
-#   S3BucketName:
-#     Value:
-#       Ref: S3Bucket
-
-# Resources:
-#   S3Bucket:
-#     Type: AWS::S3::Bucket
-#     Properties:
-#       AccessControl: Private
-#       BucketName: "this-will-pass-for-sure-cicd"
-
-
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
