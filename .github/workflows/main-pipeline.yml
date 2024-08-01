@@ -83,7 +83,7 @@ jobs:
     - name: Deploy CloudFormation stack
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
-        name: ci-cd-demo-stack
+        name: ci-cd-demo-stac-v5
         template: ./cloudformation/template.yml
         no-fail-on-empty-changeset: "1"
         capabilities: CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM,CAPABILITY_NAMED_IAM
