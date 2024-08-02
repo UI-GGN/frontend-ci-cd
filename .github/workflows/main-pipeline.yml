@@ -83,11 +83,11 @@ jobs:
     - name: Deploy CloudFormation stack
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
-        name: ci-cd-demo-stac-v5
+        name: ci-cd-demo-stack-v6
         template: ./cloudformation/template.yml
         no-fail-on-empty-changeset: "1"
         capabilities: CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM,CAPABILITY_NAMED_IAM
-        parameter-overrides: "BucketName=frontend-ci-cd-web-app-s3-bucket-v5"
+        parameter-overrides: "BucketName=frontend-ci-cd-web-app-s3-bucket-v6"
         
   deploy_to_cloud:
     needs: provision_infrastructure
@@ -112,11 +112,11 @@ jobs:
         yarn build
     - name: Upload to S3
       run: |
-        aws s3 sync ./build s3://frontend-ci-cd-web-app-s3-bucket-v5 --delete
+        aws s3 sync ./build s3://frontend-ci-cd-web-app-s3-bucket-v6 --delete
     - name: Get CloudFront distribution ID
       id: get_cf_id
       run: |
-        CF_ID=$(aws cloudformation describe-stacks --stack-name ci-cd-demo-stack-v5 --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" --output text)
+        CF_ID=$(aws cloudformation describe-stacks --stack-name ci-cd-demo-stack-v6 --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" --output text)
         echo "::set-output name=cf_id::$CF_ID"
 
     - name: Invalidate CloudFront cache
